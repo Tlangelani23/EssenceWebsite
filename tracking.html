@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Track Order - Essence of the Middle East</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    
+    <style>
+        :root {
+            --bg-color: #121212;
+            --card-bg: #1e1e1e;
+            --text-color: #e0e0e0;
+            --gold-accent: #d4af37;
+            --gold-light: #f4d03f;
+            --border-color: #333;
+            --success-color: #28a745;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Montserrat', sans-serif;
+            min-height: 100vh;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Header */
+        .navbar {
+            background-color: var(--bg-color);
+            border-bottom: 1px solid var(--border-color);
+            padding: 1rem 0;
+        }
+
+        .brand-logo {
+            color: var(--gold-accent);
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            letter-spacing: 1px;
+        }
+
+        .nav-link {
+            color: var(--text-color);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-left: 2rem;
+        }
+
+        .nav-link:hover {
+            color: var(--gold-accent);
+        }
+
+        /* Page Header */
+        .page-header {
+            padding: 3rem 0;
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 3rem;
+        }
+
+        .page-title {
+            font-size: 2.5rem;
+            color: #fff;
+            margin-bottom: 0.5rem;
+        }
+
+        .order-ref {
+            color: var(--gold-accent);
+            font-family: monospace;
+            font-size: 1.1rem;
+        }
+
+        /* Status Cards */
+        .status-card {
+            background: linear-gradient(135deg, var(--card-bg) 0%, #2a2a2a 100%);
+            border: 1px solid var(--border-color);
+            border-radius: 0;
+            padding: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .status-badge {
+            display: inline-block;
+            background-color: var(--gold-accent);
+            color: #000;
+            padding: 0.5rem 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+        }
+
+        .status-title {
+            font-size: 2rem;
+            color: #fff;
+            margin-bottom: 0.5rem;
+        }
+
+        .estimated-delivery {
+            color: var(--gold-accent);
+            font-size: 1.1rem;
+        }
+
+        /* Timeline */
+        .timeline-section {
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            color: #fff;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 24px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--border-color);
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 4rem;
+            padding-bottom: 3rem;
+        }
+
+        .timeline-item:last-child {
+            padding-bottom: 0;
+        }
+
+        .timeline-icon {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--card-bg);
+            border: 2px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: var(--text-color);
+            z-index: 1;
+        }
+
+        .timeline-item.completed .timeline-icon {
+            background-color: var(--gold-accent);
+            border-color: var(--gold-accent);
+            color: #000;
+        }
+
+        .timeline-item.active .timeline-icon {
+            background-color: var(--gold-accent);
+            border-color: var(--gold-accent);
+            color: #000;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+        }
+
+        .timeline-content h5 {
+            color: #fff;
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .timeline-content p {
+            color: #888;
+            font-size: 0.9rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .timeline-content .time {
+            color: var(--gold-accent);
+            font-size: 0.85rem;
+        }
+
+        /* Info Cards */
+        .info-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .info-card-title {
+            font-size: 1.2rem;
+            color: var(--gold-accent);
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .info-row:last-child {
+            border-bottom: none;
+        }
+
+        .info-label {
+            color: #888;
+            font-size: 0.9rem;
+        }
+
+        .info-value {
+            color: #fff;
+            font-weight: 500;
+        }
+
+        /* Order Items */
+        .order-item {
+            display: flex;
+            gap: 1.5rem;
+            padding: 1.5rem;
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            margin-bottom: 1rem;
+        }
+
+        .item-image {
+            width: 100px;
+            height: 100px;
+            background-color: #2a2a2a;
+            border: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #555;
+            font-size: 0.8rem;
+        }
+
+        .item-details {
+            flex: 1;
+        }
+
+        .item-name {
+            color: #fff;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .item-meta {
+            color: #888;
+            font-size: 0.9rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .item-price {
+            color: var(--gold-accent);
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        /* Order Summary */
+        .summary-section {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .summary-row.total {
+            border-bottom: none;
+            border-top: 2px solid var(--gold-accent);
+            margin-top: 1rem;
+            padding-top: 1.5rem;
+            font-size: 1.3rem;
+        }
+
+        .summary-label {
+            color: #888;
+        }
+
+        .summary-value {
+            color: #fff;
+            font-weight: 500;
+        }
+
+        .summary-row.total .summary-value {
+            color: var(--gold-accent);
+            font-weight: 700;
+        }
+
+        /* Action Buttons */
+        .action-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 4rem;
+        }
+
+        .btn-custom {
+            padding: 1rem 2rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            border-radius: 0;
+            flex: 1;
+        }
+
+        .btn-gold {
+            background-color: var(--gold-accent);
+            color: #000;
+            border: none;
+        }
+
+        .btn-gold:hover {
+            background-color: var(--gold-light);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 1px solid var(--border-color);
+            color: var(--text-color);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--gold-accent);
+            color: var(--gold-accent);
+        }
+
+        /* Support Section */
+        .support-section {
+            background: linear-gradient(135deg, #1a1a1a 0%, #252525 100%);
+            border: 1px solid var(--border-color);
+            padding: 3rem 2rem;
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .support-icon {
+            font-size: 3rem;
+            color: var(--gold-accent);
+            margin-bottom: 1.5rem;
+        }
+
+        .support-title {
+            font-size: 1.8rem;
+            color: #fff;
+            margin-bottom: 1rem;
+        }
+
+        .support-text {
+            color: #888;
+            margin-bottom: 2rem;
+        }
+
+        .support-contact {
+            color: var(--gold-accent);
+            font-size: 1.3rem;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--border-color);
+            padding: 3rem 0;
+            margin-top: 4rem;
+            text-align: center;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .footer-links {
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links a {
+            color: #888;
+            text-decoration: none;
+            margin: 0 1rem;
+            font-size: 0.85rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--gold-accent);
+        }
+
+        /* Map Placeholder */
+        .map-container {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            height: 300px;
+            margin-bottom: 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #555;
+            font-size: 1rem;
+        }
+
+        .map-placeholder {
+            text-align: center;
+        }
+
+        .map-placeholder i {
+            font-size: 3rem;
+            color: var(--gold-accent);
+            margin-bottom: 1rem;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand brand-logo" href="#">ESSENCE<br><span style="font-size:0.6em; color:#fff; font-family:'Montserrat',sans-serif;">OF THE MIDDLE EAST</span></a>
+            <div class="collapse navbar-collapse justify-content-end">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Shop</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">My Account</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Cart (2)</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <div class="page-header">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-8">
+                    <h1 class="page-title">Track Your Order</h1>
+                    <p class="order-ref">Order Reference: #69FA068E</p>
+                </div>
+                <div class="col-md-4 text-md-end mt-3 mt-md-0">
+                    <a href="#" class="btn btn-outline text-white">
+                        <i class="bi bi-download me-2"></i>Download Invoice
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" style="padding-bottom: 100px;">
+        
+        <!-- Order Status Overview -->
+        <div class="status-card">
+            <div class="row">
+                <div class="col-lg-8">
+                    <span class="status-badge">In Transit</span>
+                    <h2 class="status-title">Your order is on its way</h2>
+                    <p class="estimated-delivery">
+                        <i class="bi bi-calendar-event me-2"></i>Estimated Delivery: Friday, May 15, 2026
+                    </p>
+                </div>
+                <div class="col-lg-4 text-lg-end mt-3 mt-lg-0">
+                    <p class="mb-2" style="color: #888;">Tracking Number</p>
+                    <p class="mb-0" style="font-family: monospace; font-size: 1.2rem; color: var(--gold-accent);">
+                        1Z999AA10123456784
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tracking Timeline -->
+        <div class="timeline-section">
+            <h3 class="section-title">Order Progress</h3>
+            <div class="timeline">
+                <div class="timeline-item completed">
+                    <div class="timeline-icon">
+                        <i class="bi bi-check"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <h5>Order Confirmed</h5>
+                        <p>Your order has been confirmed and is being processed</p>
+                        <p class="time">May 13, 2026 at 2:45 PM</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item completed">
+                    <div class="timeline-icon">
+                        <i class="bi bi-box-seam"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <h5>Processing</h5>
+                        <p>Your items are being picked and packed</p>
+                        <p class="time">May 13, 2026 at 4:30 PM</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item completed">
+                    <div class="timeline-icon">
+                        <i class="bi bi-truck"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <h5>Shipped</h5>
+                        <p>Your order has been dispatched and is in transit</p>
+                        <p class="time">May 14, 2026 at 9:15 AM</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item active">
+                    <div class="timeline-icon">
+                        <i class="bi bi-geo-alt"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <h5>Out for Delivery</h5>
+                        <p>Your package is out for delivery</p>
+                        <p class="time">Expected: May 15, 2026</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-icon">
+                        <i class="bi bi-house-check"></i>
+                    </div>
+                    <div class="timeline-content">
+                        <h5>Delivered</h5>
+                        <p>Your order has been delivered</p>
+                        <p class="time">Pending</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Delivery Map -->
+        <h3 class="section-title">Delivery Location</h3>
+        <div class="map-container">
+            <div class="map-placeholder">
+                <i class="bi bi-map"></i>
+                <p>Interactive Map would be displayed here</p>
+                <p style="font-size: 0.85rem; margin-top: 0.5rem;">Showing: 123 Main Street, Cape Town, 8001</p>
+            </div>
+        </div>
+
+        <!-- Delivery Information -->
+        <div class="row mb-5">
+            <div class="col-lg-6 mb-4 mb-lg-0">
+                <div class="info-card">
+                    <h4 class="info-card-title">
+                        <i class="bi bi-geo-alt-fill me-2"></i>Shipping Address
+                    </h4>
+                    <div class="info-row">
+                        <span class="info-label">Recipient</span>
+                        <span class="info-value">John Doe</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Address</span>
+                        <span class="info-value">123 Main Street</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">City</span>
+                        <span class="info-value">Cape Town</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Province</span>
+                        <span class="info-value">Western Cape</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Postal Code</span>
+                        <span class="info-value">8001</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Phone</span>
+                        <span class="info-value">+27 00 000 0000</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-6">
+                <div class="info-card">
+                    <h4 class="info-card-title">
+                        <i class="bi bi-truck me-2"></i>Shipping Method
+                    </h4>
+                    <div class="info-row">
+                        <span class="info-label">Carrier</span>
+                        <span class="info-value">DHL Express</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Service</span>
+                        <span class="info-value">Express Delivery</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Tracking Number</span>
+                        <span class="info-value">1Z999AA10123456784</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Shipping Cost</span>
+                        <span class="info-value">R 150.00</span>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label">Estimated Delivery</span>
+                        <span class="info-value">May 15, 2026</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Order Items -->
+        <h3 class="section-title">Order Items (2)</h3>
+        <div class="mb-5">
+            <div class="order-item">
+                <div class="item-image">
+                    <i class="bi bi-image" style="font-size: 2rem;"></i>
+                </div>
+                <div class="item-details">
+                    <h5 class="item-name">Premium Oudh Oil - 10ml</h5>
+                    <p class="item-meta">SKU: OUD-001 | Quantity: 1</p>
+                    <p class="item-meta">Variant: Royal Blend</p>
+                    <p class="item-price">R 3,500.00</p>
+                </div>
+            </div>
+            
+            <div class="order-item">
+                <div class="item-image">
+                    <i class="bi bi-image" style="font-size: 2rem;"></i>
+                </div>
+                <div class="item-details">
+                    <h5 class="item-name">Arabian Incense Set</h5>
+                    <p class="item-meta">SKU: INC-045 | Quantity: 1</p>
+                    <p class="item-meta">Variant: Mixed Collection</p>
+                    <p class="item-price">R 3,650.00</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Order Summary -->
+        <h3 class="section-title">Order Summary</h3>
+        <div class="summary-section mb-5">
+            <div class="summary-row">
+                <span class="summary-label">Subtotal (2 items)</span>
+                <span class="summary-value">R 7,150.00</span>
+            </div>
+            <div class="summary-row">
+                <span class="summary-label">Shipping</span>
+                <span class="summary-value">R 150.00</span>
+            </div>
+            <div class="summary-row">
+                <span class="summary-label">Tax (15%)</span>
+                <span class="summary-value">R 1,072.50</span>
+            </div>
+            <div class="summary-row">
+                <span class="summary-label">Discount</span>
+                <span class="summary-value" style="color: var(--success-color);">- R 72.50</span>
+            </div>
+            <div class="summary-row total">
+                <span class="summary-label">Total Paid</span>
+                <span class="summary-value">R 7,300.00</span>
+            </div>
+        </div>
+
+        <!-- Payment Information -->
+        <div class="info-card mb-5">
+            <h4 class="info-card-title">
+                <i class="bi bi-credit-card me-2"></i>Payment Information
+            </h4>
+            <div class="info-row">
+                <span class="info-label">Payment Method</span>
+                <span class="info-value">Credit Card</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">Card Type</span>
+                <span class="info-value">Visa</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">Card Number</span>
+                <span class="info-value">**** **** **** 9549</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">Transaction ID</span>
+                <span class="info-value">TXN-2026-05-13-8842</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">Payment Date</span>
+                <span class="info-value">May 13, 2026 at 2:45 PM</span>
+            </div>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="action-buttons">
+            <button class="btn btn-custom btn-gold">
+                <i class="bi bi-arrow-repeat me-2"></i>Track Package
+            </button>
+            <button class="btn btn-custom btn-outline">
+                <i class="bi bi-arrow-left me-2"></i>Back to Orders
+            </button>
+        </div>
+
+        <!-- Support Section -->
+        <div class="support-section">
+            <div class="support-icon">
+                <i class="bi bi-headset"></i>
+            </div>
+            <h3 class="support-title">Need Help with Your Order?</h3>
+            <p class="support-text">
+                Our customer support team is here to assist you with any questions<br>
+                about your delivery or order details.
+            </p>
+            <a href="tel:+27211234567" class="support-contact">
+                <i class="bi bi-telephone-fill me-2"></i>+27 21 123 4567
+            </a>
+            <div class="mt-4">
+                <p class="mb-2" style="color: #888;">Or email us at</p>
+                <a href="mailto:support@essence-me.com" class="support-contact" style="font-size: 1rem;">
+                    support@essence-me.com
+                </a>
+            </div>
+            <div class="mt-4">
+                <p class="mb-0" style="color: #666; font-size: 0.85rem;">
+                    Available Mon-Fri: 8am - 6pm SAST
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms & Conditions</a>
+                <a href="#">Shipping Policy</a>
+                <a href="#">Returns & Refunds</a>
+                <a href="#">Contact Us</a>
+            </div>
+            <p class="mb-0">&copy; 2026 Essence of the Middle East. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

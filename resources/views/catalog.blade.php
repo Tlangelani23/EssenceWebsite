@@ -17,7 +17,7 @@
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 
 </head>
 
@@ -59,7 +59,7 @@
             <ul class="navbar-nav">
 
                 <li class="nav-item">
-                    <a class="nav-link" href="home.html">
+                    <a class="nav-link" href="{{ url('/') }}">
                         Home
                     </a>
                 </li>
@@ -202,248 +202,46 @@
 
                 <div class="row g-4">
 
-                    <div class="col-md-6 col-xl-3">
+    @foreach($products as $product)
 
-                        <div class="perfume-card">
+        <div class="col-md-6 col-xl-3">
 
-                            <i class="fa-regular fa-heart heart"></i>
+        <a href="{{ route('products.show', $product) }}"
+            class="text-decoration-none text-reset">
 
-                            <img src="../images/vanilla28.jpg">
+            <div class="perfume-card">
 
-                            <div class="card-content">
+                <i class="fa-regular fa-heart heart"></i>
 
-                                <h3>Vanilla 28</h3>
+                <img src="{{ asset('images/' . $product->image) }}"
+                     alt="{{ $product->name }}">
 
-                                <span class="category">
-                                    Ladies
-                                </span>
+                <div class="card-content">
 
-                                <p>
-                                    Vanilla Orchid, Brown Sugar
-                                </p>
+                    <h3>{{ $product->name }}</h3>
 
-                                <span class="tag">
-                                    Very Long
-                                </span>
+                    <span class="category">
+                        {{ $product->category }}
+                    </span>
 
-                            </div>
+                    <p>
+                        {{ $product->scent_profile }}
+                    </p>
 
-                        </div>
-
-                    </div>
-
-                    <div class="col-md-6 col-xl-3">
-
-                        <div class="perfume-card">
-
-                            <i class="fa-regular fa-heart heart"></i>
-
-                            <img src="../images/theone.jpg">
-
-                            <div class="card-content">
-
-                                <h3>The One</h3>
-
-                                <span class="category">
-                                    Men
-                                </span>
-
-                                <p>
-                                    Grapefruit, Coriander, Basil
-                                </p>
-
-                                <span class="tag">
-                                    Long
-                                </span>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                    <div class="col-md-6 col-xl-3">
-
-                        <div class="perfume-card">
-
-                            <i class="fa-regular fa-heart heart"></i>
-
-                            <img src="../images/rush.jpg">
-
-                            <div class="card-content">
-
-                                <h3>Rush</h3>
-
-                                <span class="category">
-                                    Unisex
-                                </span>
-
-                                <p>
-                                    Peach, Gardenia, Coriander
-                                </p>
-
-                                <span class="tag">
-                                    Long
-                                </span>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                    <div class="col-md-6 col-xl-3">
-
-                        <div class="perfume-card">
-
-                            <i class="fa-regular fa-heart heart"></i>
-
-                            <img src="../images/tommygirl.jpg">
-
-                            <div class="card-content">
-
-                                <h3>Tommy Girl</h3>
-
-                                <span class="category">
-                                    Ladies
-                                </span>
-
-                                <p>
-                                    Apple, Blackcurrant, Mandarin
-                                </p>
-
-                                <span class="tag">
-                                    Moderate
-                                </span>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="col-md-6 col-xl-3">
-
-                        <div class="perfume-card">
-
-                            <i class="fa-regular fa-heart heart"></i>
-
-                            <img src="../images/yara.jpg">
-
-                            <div class="card-content">
-
-                                <h3>Yara</h3>
-
-                                <span class="category">
-                                    Ladies
-                                </span>
-
-                                <p>
-                                    Tangerine, Orchid, Heliotrope
-                                </p>
-
-                                <span class="tag">
-                                    Long
-                                </span>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                    <div class="col-md-6 col-xl-3">
-
-                        <div class="perfume-card">
-
-                            <i class="fa-regular fa-heart heart"></i>
-
-                            <img src="../images/guiltymen.jpg">
-
-                            <div class="card-content">
-
-                                <h3>Guilty Men</h3>
-
-                                <span class="category">
-                                    Men
-                                </span>
-
-                                <p>
-                                    Lemon, Pink Pepper
-                                </p>
-
-                                <span class="tag">
-                                    Long
-                                </span>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                    <div class="col-md-6 col-xl-3">
-
-                        <div class="perfume-card">
-
-                            <i class="fa-regular fa-heart heart"></i>
-
-                            <img src="../images/oudforgreatness.jpg">
-
-                            <div class="card-content">
-
-                                <h3>Oud For Greatness</h3>
-
-                                <span class="category">
-                                    Unisex
-                                </span>
-
-                                <p>
-                                    Bergamot, Blackcurrant
-                                </p>
-
-                                <span class="tag">
-                                    Very Long
-                                </span>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                    <div class="col-md-6 col-xl-3">
-
-                        <div class="perfume-card">
-
-                            <i class="fa-regular fa-heart heart"></i>
-
-                            <img src="../images/tommymen.jpg">
-
-                            <div class="card-content">
-
-                                <h3>Tommy Men</h3>
-
-                                <span class="category">
-                                    Men
-                                </span>
-
-                                <p>
-                                    Mint, Lavender, Grapefruit
-                                </p>
-
-                                <span class="tag">
-                                    Moderate
-                                </span>
-
-                            </div>
-
-                        </div>
-
-                    </div>
+                    <span class="tag">
+                        {{ $product->longevity }}
+                    </span>
 
                 </div>
+
+            </div>
+        </a>
+
+        </div>
+
+    @endforeach
+
+</div>
 
             </div>
 

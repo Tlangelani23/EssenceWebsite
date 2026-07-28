@@ -241,7 +241,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="Catalog.html">Collection</a>
+                        <a class="nav-link" href="{{ url('/catalog') }}">Collection</a>
                     </li>
 
                     <li class="nav-item">
@@ -288,7 +288,7 @@
                     <!-- <button class="btn hero-btn">
                        <a href="Catalog.html"> SHOP NOW</a> </button>
                     </button> -->
-                    <a href="Catalog.html" class="btn hero-btn">SHOP NOW</a>
+                    <a href="{{ url('/catalog') }}" class="btn hero-btn">SHOP NOW</a>
 
                 </div>
 
@@ -308,59 +308,32 @@
 
         <div class="row g-4">
 
+            @foreach($products as $product)
+
             <div class="col-md-4">
 
                 <div class="perfume-card">
 
-                    <img src="../images/Visionary Oud.png" alt="Perfume">
+                    <img src="{{ asset('images/'.$product->image) }}"
+                        alt="{{ $product->name }}">
 
                     <h3 class="perfume-name">
-                        Visionary Oud
+                        {{ $product->name }}
                     </h3>
 
                     <p class="price">
-                        Premium Collection
+                        {{ $product->collection }}
                     </p>
 
                 </div>
 
             </div>
 
-            <div class="col-md-4">
-
-                <div class="perfume-card">
-
-                    <img src="../images/Vanilla sweet1.png" alt="Perfume">
-
-                    <h3 class="perfume-name">
-                        Vanilla Sweet
-                    </h3>
-
-                    <p class="price">
-                        Signature Scent
-                    </p>
-
-                </div>
+            @endforeach
 
             </div>
 
-            <div class="col-md-4">
 
-                <div class="perfume-card">
-
-                    <img src="../images/velvet-rose.png" alt="Perfume">
-
-                    <h3 class="perfume-name">
-                        Velvet Rose
-                    </h3>
-
-                    <p class="price">
-                        Luxury Edition
-                    </p>
-
-                </div>
-
-            </div>
 
         </div>
 

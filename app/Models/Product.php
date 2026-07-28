@@ -19,4 +19,9 @@ class Product extends Model
         'longevity',
         'description',
     ];
+
+    public function carts()
+    {
+        return $this->hasMany(Cart::class);
+    }
 }

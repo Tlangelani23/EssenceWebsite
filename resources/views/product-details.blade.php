@@ -255,11 +255,9 @@
             Fragrance Notes
         </h2>
 
-
         <div class="row justify-content-center">
 
             <div class="col-lg-8">
-
 
                 <div class="note-card mb-4">
 
@@ -281,11 +279,11 @@
                     <i class="fa-solid fa-spa"></i>
 
                     <h4>
-                        Collection
+                        Middle Notes
                     </h4>
 
                     <p>
-                        {{ $product->collection }}
+                        {{ $product->middle_notes }}
                     </p>
 
                 </div>
@@ -296,82 +294,12 @@
                     <i class="fa-solid fa-gem"></i>
 
                     <h4>
-                        Longevity
+                        Base Notes
                     </h4>
 
                     <p>
-                        {{ $product->longevity }}
+                        {{ $product->base_notes }}
                     </p>
-
-                </div>
-
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<section class="product-information py-5">
-
-    <div class="container">
-
-        <h2 class="product-section-title text-center mb-5">
-            Product Information
-        </h2>
-
-
-        <div class="row justify-content-center">
-
-            <div class="col-lg-8">
-
-                <div class="info-card">
-
-                    <div class="row">
-
-
-                        <div class="col-md-4">
-
-                            <strong>
-                                Category
-                            </strong>
-
-                            <p>
-                                {{ $product->category }}
-                            </p>
-
-                        </div>
-
-                        <div class="col-md-4">
-
-                            <strong>
-                                Longevity
-                            </strong>
-
-                            <p>
-                                {{ $product->longevity }}
-                            </p>
-
-                        </div>
-
-
-                        <div class="col-md-4">
-
-                            <strong>
-                                Volume
-                            </strong>
-
-                            <p>
-                                50 ml
-                            </p>
-
-                        </div>
-
-
-                    </div>
 
                 </div>
 

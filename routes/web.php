@@ -28,3 +28,9 @@ Route::patch('/cart/{cart}/decrease', [CartController::class, 'decrease'])
 
 Route::delete('/cart/{cart}', [CartController::class, 'remove'])
     ->name('cart.remove');    
+
+Route::get('/contact', [InquiryController::class, 'index'])->name('contact.index');
+
+Route::post('/contact', [InquiryController::class, 'store'])->name('contact.store');
+
+Route::get('/about', [AboutController::class, 'index'])->name('about.index');
